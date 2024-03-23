@@ -13,7 +13,7 @@ Shader "Toon/Basic" {
 		Pass {
 			Name "BASE"
 			Cull Off
-			
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -31,7 +31,7 @@ Shader "Toon/Basic" {
 				float2 texcoord : TEXCOORD0;
 				float3 normal : NORMAL;
 			};
-			
+
 			struct v2f {
 				float4 pos : SV_POSITION;
 				float2 texcoord : TEXCOORD0;
@@ -57,9 +57,9 @@ Shader "Toon/Basic" {
 				UNITY_APPLY_FOG(i.fogCoord, c);
 				return c;
 			}
-			ENDCG			
+			ENDCG
 		}
-	} 
+	}
 
 	Fallback "VertexLit"
 }

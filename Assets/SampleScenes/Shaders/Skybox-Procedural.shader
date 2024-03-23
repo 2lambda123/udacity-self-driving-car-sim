@@ -17,7 +17,7 @@ SubShader {
 	Cull Off ZWrite Off
 
 	Pass {
-		
+
 		CGPROGRAM
 		#pragma vertex vert
 		#pragma fragment frag
@@ -78,7 +78,7 @@ SubShader {
 				half3 rayDir : TEXCOORD0;	// Vector for incoming ray, normalized ( == -eyeRay )
 				half3 cIn : TEXCOORD1; 		// In-scatter coefficient
 				half3 cOut : TEXCOORD2;		// Out-scatter coefficient
-   		}; 
+   		};
 
 		float scale(float inCos)
 		{
@@ -92,7 +92,7 @@ SubShader {
 			OUT.pos = UnityObjectToClipPos(v.vertex);
 
 			float3 cameraPos = float3(0,kInnerRadius + kCameraHeight,0); 	// The camera's current position
-		
+
 			// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
 			float3 eyeRay = normalize(mul((float3x3)unity_ObjectToWorld, v.vertex.xyz));
 
@@ -106,14 +106,14 @@ SubShader {
 				far = sqrt(kOuterRadius2 + kInnerRadius2 * eyeRay.y * eyeRay.y - kInnerRadius2) - kInnerRadius * eyeRay.y;
 
 				float3 pos = cameraPos + far * eyeRay;
-				
+
 				// Calculate the ray's starting position, then calculate its scattering offset
 				float height = kInnerRadius + kCameraHeight;
 				float depth = exp(kScaleOverScaleDepth * (-kCameraHeight));
 				float startAngle = dot(eyeRay, cameraPos) / height;
 				float startOffset = depth*scale(startAngle);
-				
-			
+
+
 				// Initialize the scattering loop variables
 				float sampleLength = far / kSamples;
 				float scaledLength = sampleLength * kScale;
@@ -170,13 +170,13 @@ SubShader {
 				float lightScale = scale(lightAngle);
 				float cameraOffset = depth*cameraScale;
 				float temp = (lightScale + cameraScale);
-				
+
 				// Initialize the scattering loop variables
 				float sampleLength = far / kSamples;
 				float scaledLength = sampleLength * kScale;
 				float3 sampleRay = eyeRay * sampleLength;
 				float3 samplePoint = cameraPos + sampleRay * 0.5;
-				
+
 				// Now loop through the sample rays
 				float3 frontColor = float3(0.0, 0.0, 0.0);
 				float3 attenuate;
@@ -189,7 +189,7 @@ SubShader {
 					frontColor += attenuate * (depth * scaledLength);
 					samplePoint += sampleRay;
 				}
-			
+
 				OUT.cIn.xyz = frontColor * (kInvWavelength * kKrESun + kKmESun);
 				OUT.cOut.xyz = clamp(attenuate, 0.0, 1.0);
 			}
@@ -231,14 +231,14 @@ SubShader {
 				col = IN.cIn.xyz + _GroundColor * IN.cOut;
 			}
 			//Adjust color from HDR
-			col *= _HdrExposure; 
- 
+			col *= _HdrExposure;
+
 			return half4(col,1.0);
 
 		}
-		ENDCG 
+		ENDCG
 	}
-} 	
+}
 
 
 Fallback Off

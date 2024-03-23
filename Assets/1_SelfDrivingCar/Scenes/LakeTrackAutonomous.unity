@@ -10457,8 +10457,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70852dc981465ea48bb527b9e33a87fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   waypointList:
     circuit: {fileID: 1668574505}
     items:
@@ -12146,7 +12146,7 @@ Prefab:
     - target: {fileID: 114000013506099906, guid: 96664f82c8df0114a92fe864c83a9a48,
         type: 2}
       propertyPath: carController
-      value: 
+      value:
       objectReference: {fileID: 671308617}
     - target: {fileID: 114000013506099906, guid: 96664f82c8df0114a92fe864c83a9a48,
         type: 2}
@@ -12650,12 +12650,12 @@ Prefab:
     - target: {fileID: 114000011334794896, guid: 16328d84059a4491da82863ec16eb6a1,
         type: 2}
       propertyPath: CarRemoteControl
-      value: 
+      value:
       objectReference: {fileID: 1054927742}
     - target: {fileID: 114000011334794896, guid: 16328d84059a4491da82863ec16eb6a1,
         type: 2}
       propertyPath: FrontFacingCamera
-      value: 
+      value:
       objectReference: {fileID: 1506256752}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16328d84059a4491da82863ec16eb6a1, type: 2}
