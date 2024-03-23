@@ -4,24 +4,24 @@ using UnityStandardAssets.Utility;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
-    [RequireComponent(typeof(CarController))]
-    public class CarUserControl : MonoBehaviour
+[RequireComponent(typeof(CarController))]
+public class CarUserControl : MonoBehaviour
+{
+    private CarController m_Car;
+    private Steering s;
+
+    private void Awake()
     {
-        private CarController m_Car;
-        private Steering s;
+        m_Car = GetComponent<CarController>();
+        s = new Steering();
+        s.Start();
 
-        private void Awake()
-        {
-            m_Car = GetComponent<CarController>();
-            s = new Steering();
-            s.Start();
-
-        }
-
-        private void FixedUpdate()
-        {
-            s.UpdateValues();
-            m_Car.Move(s.H, s.V, s.V, 0f);
-        }
     }
+
+    private void FixedUpdate()
+    {
+        s.UpdateValues();
+        m_Car.Move(s.H, s.V, s.V, 0f);
+    }
+}
 }
